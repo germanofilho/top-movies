@@ -11,7 +11,7 @@ class TopMovies : Application() {
         startKoin {
             // Android context
             androidContext(this@TopMovies)
-            // modules
+            // moduless
             //modules(myModule)
         }
     }
