@@ -18,7 +18,7 @@ class MovieViewHolder(private val view: View) : RecyclerView.ViewHolder(view){
     }
 }
 
-class MovieAdapter(private val movies : ArrayList<Movie> = arrayListOf()) : RecyclerView.Adapter<MovieViewHolder>() {
+class MovieAdapter(private val movies : List<Movie> = arrayListOf()) : RecyclerView.Adapter<MovieViewHolder>() {
 
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): MovieViewHolder {
