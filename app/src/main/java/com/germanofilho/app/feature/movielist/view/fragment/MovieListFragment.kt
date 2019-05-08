@@ -5,7 +5,6 @@ import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
 import com.germanofilho.app.R
 import com.germanofilho.app.core.view.ui.BaseFragment
 import com.germanofilho.app.data.model.movielist.Movie
@@ -13,8 +12,6 @@ import com.germanofilho.app.feature.movielist.view.adapter.MovieAdapter
 import kotlinx.android.synthetic.main.fragment_movie_list.*
 
 class MovieListFragment : BaseFragment() {
-
-    private lateinit var adapter : MovieAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_movie_list, container, false)
