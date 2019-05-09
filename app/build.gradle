@@ -23,7 +23,7 @@ android {
 
     Properties properties = new Properties()
     properties.load(project.rootProject.file('key.properties').newDataInputStream())
-    def TMDB_API_KEY = properties.tmdbApiKey ?: "'Define TMDB Api key'"
+    def TMDB_API_KEY = properties.tmdbApiKey ?: '"Define your TMDB Api key"'
 
     android.buildTypes.each { type->
         type.buildConfigField 'String', 'TMDB_API_KEY', TMDB_API_KEY
