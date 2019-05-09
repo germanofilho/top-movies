@@ -20,6 +20,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('key.properties').newDataInputStream())
+    def TMDB_API_KEY = properties.tmdbApiKey ?: "'Define TMDB Api key'"
+
+    android.buildTypes.each { type->
+        type.buildConfigField 'String', 'TMDB_API_KEY', TMDB_API_KEY
+    }
 }
 
 dependencies {
