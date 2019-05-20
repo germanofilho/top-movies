@@ -11,8 +11,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:background="@color/colorPrimary"
-            app:itemTextColor="@color/white"
-            app:itemIconTint="@color/white"
+            app:itemTextColor="@drawable/selector_navigation_color"
+            app:itemIconTint="@drawable/selector_navigation_color"
             app:menu="@menu/navigation"/>
 
     <FrameLayout
