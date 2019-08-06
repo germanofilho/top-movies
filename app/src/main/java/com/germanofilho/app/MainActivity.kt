@@ -1,10 +1,10 @@
 package com.germanofilho.app
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.design.bottomnavigation.LabelVisibilityMode
-import android.support.v4.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.germanofilho.app.feature.movielist.view.fragment.MovieListFragment
+import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
