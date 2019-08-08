@@ -9,8 +9,6 @@ import kotlin.coroutines.CoroutineContext
 
 class MovieListViewModel(private val repository: MovieListRepository) : ViewModel(){
 
-//    private val repository : MovieListRepository =  MovieListRepository(ApiFactory.tmdbApi)
-
     private val parentJob = Job()
 
     private val coroutineContext: CoroutineContext
