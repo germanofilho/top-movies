@@ -19,7 +19,6 @@ object ApiFactory{
             .newBuilder()
             .url(newUrl)
             .build()
-
         chain.proceed(newRequest)
     }
 
@@ -27,11 +26,12 @@ object ApiFactory{
         .addInterceptor(authInterceptor)
         .build()
 
-    private fun retrofit() : Retrofit = Retrofit.Builder()
-        .client(tmdbClient)
-        .baseUrl("https://api.themoviedb.org/3/")
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-
-    val tmdbApi : MovieListApi = retrofit().create(MovieListApi::class.java)
+    fun <API> request(api : Class<API>) : API{
+        return Retrofit.Builder()
+            .client(tmdbClient)
+            .baseUrl(BuildConfig.TMDB_API_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(api)
+    }
 }
