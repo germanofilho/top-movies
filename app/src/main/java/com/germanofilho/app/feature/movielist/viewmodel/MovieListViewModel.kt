@@ -1,32 +1,27 @@
 package com.germanofilho.app.feature.movielist.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.germanofilho.app.core.helper.Resource
+import com.germanofilho.app.core.viewmodel.BaseViewModel
 import com.germanofilho.app.data.model.movielist.Movie
 import com.germanofilho.app.feature.movielist.repository.MovieListRepository
-import kotlinx.coroutines.*
-import kotlin.coroutines.CoroutineContext
+import kotlinx.coroutines.launch
 
-class MovieListViewModel(private val repository: MovieListRepository) : ViewModel(){
+class MovieListViewModel(private val repository: MovieListRepository) : BaseViewModel(){
 
-    private val parentJob = Job()
-
-    private val coroutineContext: CoroutineContext
-        get() = parentJob + Dispatchers.Default
-
-    private val scope = CoroutineScope(coroutineContext)
-
-
-    val popularMoviesLiveData = MutableLiveData<MutableList<Movie>>()
+    val popularMoviesLiveData = MutableLiveData<Resource<MutableList<Movie>>>()
 
     fun fetchMovies(){
-        scope.launch {
-                repository.getPopularMovies().let {
-                popularMoviesLiveData.postValue(it)
+        viewModelScope.launch {
+            popularMoviesLiveData.loading(true)
+            try {
+                popularMoviesLiveData.success(repository.getPopularMovies().let { it })
+            } catch (e: Exception) {
+                popularMoviesLiveData.error(e)
+            } finally {
+                popularMoviesLiveData.loading(false)
             }
         }
     }
-
-    fun cancelAllRequests() = coroutineContext.cancel()
-
 }
